@@ -26,7 +26,7 @@ import {AuthGuardService} from "./services/auth.guard.service";
 
 const routes: Routes = [
   {path: " ", component: AuthenticationComponent,canActivate:[AuthGuardService],data:{role:'Responsable'}},
-  {path: "patients", component: PatientsComponent,canActivate:[AuthGuardService],data:{role:'Preleveur'}},
+  {path: "patients", component: PatientsComponent,canActivate:[AuthGuardService],data:{role:['Preleveur','Technicien']}},
   {path: "patient-details/:id", component: PatientDetailsComponent,canActivate:[AuthGuardService],data:{role:'Preleveur'}},
   {path: "add-patient", component: AddPatientComponent,canActivate:[AuthGuardService],data:{role:'Preleveur'}},
   {path: "normes", component: NormesComponent,canActivate:[AuthGuardService],data:{role:'Responsable'}},

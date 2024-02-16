@@ -16,7 +16,10 @@ export class AuthGuardService implements CanActivate {
       map(user=>{
       const isAuth =!!user;
       if(isAuth){
-         if(user?.roles.includes(route.data['role'])) return true;
+         //if(user?.roles.includes(route.data['role'])) return true;
+        const intersectedRoles = user.roles.filter(value => route.data['role'].includes(value));
+        const isAuthorized= intersectedRoles.length? true : false;
+        if(isAuthorized)return true;
 
       }
       return this.router.createUrlTree(["/auth"]);
