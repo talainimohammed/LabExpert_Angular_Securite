@@ -22,27 +22,23 @@ import {AddUtilisateurComponent} from "./components/utilisateurs/add-utilisateur
 import {UpdateUtilisateurComponent} from "./components/utilisateurs/update-utilisateur/update-utilisateur.component";
 import {AuthenticationComponent} from "./components/authentication/authentication.component";
 import {AppComponent} from "./app.component";
+import {AuthGuardService} from "./services/auth.guard.service";
 
 const routes: Routes = [
-  {path: " ", component: AuthenticationComponent},
-  {path: "patients", component: PatientsComponent},
-  {path: "patient-details/:id", component: PatientDetailsComponent},
-  {path: "add-patient", component: AddPatientComponent},
-  {path: "normes", component: NormesComponent},
-  {path: "norme-details/:id", component: NormeDetailsComponent},
-  {path: "add-norme", component: AddNormeComponent},
-  {path: "fournisseurs", component: FournisseurComponent},
-  {path: "addfournisseur", component: AjoutFournisseurComponent},
-  {path: "updatefournisseur/:id", component: UpdateFournisseurComponent},
-  {path: "echantillons", component: EchantillonComponent},
-  {path: "addechantillon", component: AjoutEchantillonComponent},
-  {path: "echantillon-details/:id", component: EchantillonDetailsComponent},
-  {path: "fournisseurs", component: FournisseurComponent},
-  {path: "addfournisseur", component: AjoutFournisseurComponent},
-  {path: "updatefournisseur/:id", component: UpdateFournisseurComponent},
-  {path: "echantillons", component: EchantillonComponent},
-  {path: "addechantillon", component: AjoutEchantillonComponent},
-  {path: "Reactif",component: ReactifsComponent},
+  {path: " ", component: AuthenticationComponent,canActivate:[AuthGuardService],data:{role:'Responsable'}},
+  {path: "patients", component: PatientsComponent,canActivate:[AuthGuardService],data:{role:'Preleveur'}},
+  {path: "patient-details/:id", component: PatientDetailsComponent,canActivate:[AuthGuardService],data:{role:'Preleveur'}},
+  {path: "add-patient", component: AddPatientComponent,canActivate:[AuthGuardService],data:{role:'Preleveur'}},
+  {path: "normes", component: NormesComponent,canActivate:[AuthGuardService],data:{role:'Responsable'}},
+  {path: "norme-details/:id", component: NormeDetailsComponent,canActivate:[AuthGuardService],data:{role:'Responsable'}},
+  {path: "add-norme", component: AddNormeComponent,canActivate:[AuthGuardService],data:{role:'Responsable'}},
+  {path: "fournisseurs", component: FournisseurComponent,canActivate:[AuthGuardService],data:{role:'Responsable'}},
+  {path: "addfournisseur", component: AjoutFournisseurComponent,canActivate:[AuthGuardService],data:{role:'Responsable'}},
+  {path: "updatefournisseur/:id", component: UpdateFournisseurComponent,canActivate:[AuthGuardService],data:{role:'Responsable'}},
+  {path: "echantillons", component: EchantillonComponent,canActivate:[AuthGuardService],data:{role:'Preleveur'}},
+  {path: "addechantillon", component: AjoutEchantillonComponent,canActivate:[AuthGuardService],data:{role:'Preleveur'}},
+  {path: "echantillon-details/:id", component: EchantillonDetailsComponent,canActivate:[AuthGuardService],data:{role:'Preleveur'}},
+  {path: "Reactif",component: ReactifsComponent,canActivate:[AuthGuardService],data:{role:'Responsable'}},
   {
     path: "AddReactif",
     component: AddReactifComponent

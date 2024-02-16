@@ -67,13 +67,12 @@
   <hr>
 
   <div class="dropdown pb-4">
-    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
-       data-bs-toggle="dropdown" aria-expanded="false">
-      <img src="User.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-      <span class="d-none d-sm-inline mx-1">loser</span>
+    <a href="#" class="d-flex align-items-center text-white text-decoration-none" aria-expanded="false">
+      <i class="fa-solid fa-circle-user"></i>
+      <span class="d-none d-sm-inline mx-1">{{ name }}</span>
     </a>
     <li *ngIf="isAuthenticated">
-      <a (click)="logout()">Signout</a>
+      <a (click)="logout()" class="btn btn-primary btn-sm">Signout</a>
     </li>
   </div>
 </div>

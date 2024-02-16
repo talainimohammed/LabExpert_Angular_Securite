@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit ,OnDestroy{
   isAdmin=false;
   isTechnicien=false;
   isPreleveur=false;
+  name:string|undefined;
   constructor(private authService:AuthService) { }
 
   ngOnDestroy(): void {
@@ -29,6 +30,7 @@ export class DashboardComponent implements OnInit ,OnDestroy{
       }
       else if(!!loggedUser){
         this.setRole(loggedUser);
+        this.name=loggedUser?.username
       }
     });
   }
