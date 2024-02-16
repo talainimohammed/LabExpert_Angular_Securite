@@ -1,0 +1,17 @@
+<div class="card">
+  <form [formGroup]="loginFormGroup" method="post">
+    <div class="card-body">
+      <div class="form-group">
+        <label class="text-muted">Username</label>
+        <input type="text" class="form-control form-font rounded-0 mt-1 mb-3" formControlName="username">
+      </div>
+      <div class="form-group">
+        <label class="text-muted">Password</label>
+        <input type="password" class="form-control form-font rounded-0 mt-1 mb-3" formControlName="password">
+      </div>
+    </div>
+    <div class="card-footer">
+      <button type="button" (click)="onLogin()" class="btn btn-sm btn-primary">Login</button>
+    </div>
+  </form>
+</div>

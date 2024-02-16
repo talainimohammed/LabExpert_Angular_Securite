@@ -1,4 +1,4 @@
-<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+<div *ngIf="isAuthenticated" class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
   <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <span class="fs-5 d-none d-sm-inline">
             <img src="../../assets/img/logo.png" width="129" height="116">
@@ -12,52 +12,52 @@
         <span class="ms-1 d-none d-sm-inline">Home</span>
       </a>
     </li>
-    <li>
+    <li *ngIf="isPreleveur">
       <a routerLink="/echantillons" class="nav-link px-0 align-middle">
         <i class="fa fa-table fs-4 bi-table"></i>
         <span class="ms-1 d-none d-sm-inline">Echantillon</span>
       </a>
     </li>
-    <li>
+    <li *ngIf="isPreleveur || isTechnicien">
       <a routerLink="/patients" class="nav-link px-0 align-middle">
         <i class="fa fa-users fs-4 bi-people"></i>
         <span class="ms-1 d-none d-sm-inline">Patient</span>
       </a>
     </li>
-    <li>
+    <li *ngIf="isPreleveur">
       <a routerLink="/planification" class="nav-link px-0 align-middle">
         <i class="fa fa-calendar fs-4 bi-people"></i>
         <span class="ms-1 d-none d-sm-inline">Planification</span>
       </a>
     </li>
-    <li><a routerLink="/analyses" class="nav-link px-0 align-middle">
+    <li *ngIf="isTechnicien"><a routerLink="/analyses" class="nav-link px-0 align-middle">
       <i class="fa fa-hourglass-start fs-4 bi-people"></i>
       <span class="ms-1 d-none d-sm-inline">Analyse</span>
     </a>
     </li>
-    <li><a routerLink="/Reactif" class="nav-link px-0 align-middle">
+    <li *ngIf="isAdmin"><a routerLink="/Reactif" class="nav-link px-0 align-middle">
       <i class="fa fa-flask fs-4 bi-people"> </i>
       <span class="ms-1 d-none d-sm-inline">Reactifs</span>
     </a>
     </li>
-    <li><a routerLink="/Outil" class="nav-link px-0 align-middle">
+    <li *ngIf="isAdmin"><a routerLink="/Outil" class="nav-link px-0 align-middle">
       <i class="fa fa-wrench fs-4 bi-people"></i>
       <span class="ms-1 d-none d-sm-inline">Materiel</span>
     </a>
     </li>
-    <li>
+    <li *ngIf="isAdmin">
       <a routerLink="/normes" class="nav-link px-0 align-middle">
         <i class="icon ion-ios-flower fs-4 bi-people"></i>
         <span class="ms-1 d-none d-sm-inline">Norme</span>
       </a>
     </li>
-    <li>
+    <li *ngIf="isAdmin">
       <a routerLink="/Utilisateur" class="nav-link px-0 align-middle">
         <i class="fa fa-user-md fs-4 bi-people"></i>
         <span class="ms-1 d-none d-sm-inline">Utilisateur</span>
       </a>
     </li>
-    <li>
+    <li *ngIf="isAdmin">
       <a routerLink="/fournisseurs" class="nav-link px-0 align-middle">
         <i class="fa fa-user-md fs-4 bi-people"></i>
         <span class="ms-1 d-none d-sm-inline">Fournisseur</span>
@@ -72,22 +72,9 @@
       <img src="User.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
       <span class="d-none d-sm-inline mx-1">loser</span>
     </a>
-    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-      <li>
-        <a class="dropdown-item" href="#">New project...</a>
-      </li>
-      <li><a class="dropdown-item" href="#">Settings</a>
-      </li>
-      <li>
-        <a class="dropdown-item" href="#">Profile</a>
-      </li>
-      <li>
-        <hr class="dropdown-divider">
-      </li>
-      <li>
-        <a class="dropdown-item" href="#">Sign out</a>
-      </li>
-    </ul>
+    <li *ngIf="isAuthenticated">
+      <a (click)="logout()">Signout</a>
+    </li>
   </div>
 </div>
 

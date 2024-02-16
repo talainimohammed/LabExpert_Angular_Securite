@@ -20,8 +20,11 @@ import {AddOutilComponent} from "./components/outils/add-outil/add-outil.compone
 import {UtilisateursComponent} from "./components/utilisateurs/utilisateurs.component";
 import {AddUtilisateurComponent} from "./components/utilisateurs/add-utilisateur/add-utilisateur.component";
 import {UpdateUtilisateurComponent} from "./components/utilisateurs/update-utilisateur/update-utilisateur.component";
+import {AuthenticationComponent} from "./components/authentication/authentication.component";
+import {AppComponent} from "./app.component";
 
 const routes: Routes = [
+  {path: " ", component: AuthenticationComponent},
   {path: "patients", component: PatientsComponent},
   {path: "patient-details/:id", component: PatientDetailsComponent},
   {path: "add-patient", component: AddPatientComponent},
@@ -66,7 +69,7 @@ const routes: Routes = [
   },
   {path: "echantillon-details/:id", component: EchantillonDetailsComponent},
   {path: "planification", component: PlanificationComponent},
-
+  {path: "auth", component:AuthenticationComponent},
 
 ];
 

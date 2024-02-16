@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
@@ -33,6 +33,8 @@ import {AddOutilComponent} from "./components/outils/add-outil/add-outil.compone
 import {UpdateUtilisateurComponent} from "./components/utilisateurs/update-utilisateur/update-utilisateur.component";
 import {AddReactifComponent} from "./components/reactifs/add-reactif/add-reactif.component";
 import {ReactifService} from "./services/reactif.service";
+import { AuthenticationComponent } from './components/authentication/authentication.component';
+import {AuthInterceptorService} from "./services/auth.interceptor.service";
 
 @NgModule({
   declarations: [
@@ -66,7 +68,8 @@ import {ReactifService} from "./services/reactif.service";
     AjoutEchantillonComponent,
     SearchPatientPipe,
     EchantillonDetailsComponent,
-    PlanificationComponent
+    PlanificationComponent,
+    AuthenticationComponent
   ],
   imports: [
     BrowserModule,
@@ -90,11 +93,14 @@ import {ReactifService} from "./services/reactif.service";
     FournisseurService,
     EchantillonService,
     OutilService,
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptorService,multi:true},
     {provide: 'url_fournisseur', useValue: 'http://localhost:8080/api/v1/fournisseur'},
     {provide: 'url_echantillon', useValue: 'http://localhost:8080/api/v1/echantillon'},
     {provide: 'url_patient', useValue: 'http://localhost:8080/api/v1/patient'},
     {provide: 'url_outil', useValue: 'http://localhost:8080/api/v1/outil'},
-    {provide: 'url_fournisseur', useValue: 'http://localhost:8080/api/v1/fournisseur'}
+    {provide: 'url_fournisseur', useValue: 'http://localhost:8080/api/v1/fournisseur'},
+    {provide: 'url_login', useValue: 'http://localhost:8080/login'}
+
   ],
 
   bootstrap: [AppComponent]
